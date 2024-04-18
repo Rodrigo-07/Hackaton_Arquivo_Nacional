@@ -9,4 +9,4 @@ class OutputModel(BaseModel):
     title: str
     date: date
     content: str
-    tags: List
+    tags: str

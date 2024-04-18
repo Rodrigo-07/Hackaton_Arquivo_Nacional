@@ -1,5 +1,7 @@
+from Data.DBManager import DBManager
+
 class UserService:
-    def __init__(self, db_manager):
+    def __init__(self, db_manager: DBManager):
         self.db_manager = db_manager
         self.table_name = "tbl_users"
 

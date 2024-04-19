@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import ResponseCard from "../comment_reponse/comment_response";
-
 const CommentCard = ({ comment }) => {
-
     const comments = {
         "comments": [
             {
@@ -32,15 +30,12 @@ const CommentCard = ({ comment }) => {
             }
         ]
     };
-
     const firstComment = comments.comments[0];
-
     // State for main comment upvotes and downvotes
     const [upvotes, setUpvotes] = useState(firstComment.upvotes_normal);
     const [downvotes, setDownvotes] = useState(firstComment.downvote);
     const [hasUpvoted, setHasUpvoted] = useState(false);
     const [hasDownvoted, setHasDownvoted] = useState(false);
-
     // Function to handle upvoting
     const handleUpvote = () => {
         if (!hasUpvoted) {
@@ -52,7 +47,6 @@ const CommentCard = ({ comment }) => {
             }
         }
     };
-
     // Function to handle downvoting
     const handleDownvote = () => {
         if (!hasDownvoted) {
@@ -64,12 +58,10 @@ const CommentCard = ({ comment }) => {
             }
         }
     };
-
     // Function to handle upvoting and downvoting of responses
     const handleResponseVote = (responseIndex, isUpvote) => {
         const updatedResponses = [...firstComment.responses];
         const updatedResponse = { ...updatedResponses[responseIndex] };
-
         if (!updatedResponse.hasUpvoted && !updatedResponse.hasDownvoted) {
             if (isUpvote) {
                 updatedResponse.upvotes_normal += 1;
@@ -87,13 +79,11 @@ const CommentCard = ({ comment }) => {
                 }
             }
         }
-
         const updatedComments = [...comments.comments];
         updatedComments[0].responses[responseIndex] = updatedResponse;
         // Update state for responses
         // setComments({ comments: updatedComments }); // Remove this line
     };
-
     return (
         <div className="bg-white shadow-md rounded-md p-4 mb-4">
             <div className="flex items-center mb-2">
@@ -125,5 +115,4 @@ const CommentCard = ({ comment }) => {
         </div>
     );
 };
-
 export default CommentCard;

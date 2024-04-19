@@ -1,27 +1,50 @@
 import { Fragment, useState } from 'react';
 import { Menu } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import Header from "../../components/header/header";
-import BottomBar from '../../components/bottom_bar/bottom_bar';
+import { useEffect } from 'react';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function PerfilPage({ user_id, user_name, user_foto, user_role }) {
+export default function PerfilPage({ user_id, user_name, user_foto, user_role, xp }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [userLevel, setUserLevel] = useState("Iniciante");
+const [userColor, setUsercolor] = useState("border-gray-500");
+
+useEffect(() => {
+    switch (true) {
+        case xp > 2000:
+            setUserLevel("Bronze");
+            setUsercolor("border-yellow-200");
+            break;
+        case xp > 4000:
+            setUserLevel("Prata");
+            setUsercolor("border-gray-3");
+            break;
+        case xp > 6000:
+            setUserLevel("Ouro");
+            setUsercolor("border-yellow-500");
+            break;
+        default:
+            setUserLevel("Iniciante");
+            setUsercolor("border-gray-500");
+            break;
+    }
+}, [xp]);
 
   return (
     <main className="container h-screen"> 
         <section className="user-infos container mt-12 grid-rows-3 text-center">
             <div className="">
             <img 
-            src="https://media.licdn.com/dms/image/C4E03AQG_BDP4flUBCQ/profile-displayphoto-shrink_400_400/0/1609536816536?e=1718841600&v=beta&t=ZIa_Xwa4QJGHnTZC2rUCUYO_ICcVy6pVbqChDeJQdvU" // iremos utilizar um mock devido ao sistema complexo de login e usuário,mas basta puxar do parâmetro a imagem do usuário e funcionará 
+            src="https://media.licdn.com/dms/image/C4E03AQG_BDP4flUBCQ/profile-displayphoto-shrink_400_400/0/1609536816536?e=1718841600&v=beta&t=ZIa_Xwa4QJGHnTZC2rUCUYO_ICcVy6pVbqChDeJQdvU" // iremos utilizar um mock devido ao sistema complexo de login e usuário,mas basta adicionar o endpoint com esses dados e fornnecer à função os parâmetros
             alt="user foto"  
-            className="rounded-full mx-auto block w-[40%] h-auto"/>
+            className={`rounded-full mx-auto block w-[40%] h-auto border-8 ${userColor}`}/>
             </div>
             <div className="mt-4">
-            <h1 className='text-3xl'>{user_name}</h1>
+            <h1 className='text-3xl'>{user_name}Rodrigo Sales</h1>
+            <p className='text-lg'>Seu nivel é {userLevel}</p>
             </div>
             <div className="container grid-rows-3">
             <div className="m-5">

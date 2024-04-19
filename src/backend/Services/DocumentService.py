@@ -1,4 +1,5 @@
 import sqlite3
+from typing import List
 from Models.DocumentModel import DocumentModel
 
 DATABASE_PATH = 'Data/database/db.sqlite'
@@ -23,6 +24,29 @@ class DocumentService:
             row = cursor.fetchone()
             if row:
                 return DocumentModel(**dict(row))
+    
+    @staticmethod
+    def get_all_documents() -> List[DocumentModel]:
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM tbl_documents")
+            rows = cursor.fetchall()
+            
+            documents = []
+            for row in rows:
+                document = DocumentModel(
+                    id=row['id'],
+                    data_type=row['data_type'],
+                    path=row['path'],
+                    title=row['title'],
+                    date=row['date'],
+                    content=row['content'],
+                    tags=row['tags']
+                )
+                documents.append(document)
+            
+            return documents
 
     @staticmethod
     def update_document(document_id: int, document: DocumentModel):

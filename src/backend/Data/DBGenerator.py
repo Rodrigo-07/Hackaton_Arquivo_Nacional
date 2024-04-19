@@ -7,16 +7,16 @@ cursor = conn.cursor()
 
 models_folder = 'Models'
 
-# Itera sobre os arquivos na pasta de modelos
+# itera sobre os arquivos na pasta de modelos
 for filename in os.listdir(models_folder):
     if filename.endswith('.py'):
-        # Carrega o arquivo do modelo
+        # arquivo do modelo
         module_name = os.path.splitext(filename)[0]
         module = SourceFileLoader(module_name, os.path.join(models_folder, filename)).load_module()
 
         name_of_file = os.path.splitext(filename)[0]
 
-        # Obtém o nome da tabela e o modelo do arquivo
+        # nome da tabela e o modelo do arquivo
         table_name = getattr(module, 'table_name', None)
         model = getattr(module, name_of_file, None)
 

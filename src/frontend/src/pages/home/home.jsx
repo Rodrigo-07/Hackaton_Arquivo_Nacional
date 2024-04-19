@@ -11,9 +11,7 @@ function HomePage(){
         <main className="w-full bg-bage-bg">
             <Header/>
             <Tabs/>
-            <footer>
-                <BottomBar/>
-            </footer>
+            <BottomBar/>
         </main>
     )
 };

@@ -8,7 +8,7 @@ function ArchiveCard({ title, image, subtitle }) {
         {image && <img src={image} alt="Placeholder" className="mb-2 object-cover" />}
         {title && <div className="font-semibold text-gray-800 text-2xl mb-2">{title}</div>}
         {subtitle && <div className="font-regular text-gray-700 text-base">
-          {subtitle}</div>}
+        {subtitle}</div>}
       </div>
     </div>
   )

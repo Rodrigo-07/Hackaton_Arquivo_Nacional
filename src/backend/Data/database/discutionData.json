@@ -1,0 +1,62 @@
+{
+    "id": 1,
+    "comments": [
+      {
+        "id_user": 9,
+        "suggestion": "12 de Julho de 1979",
+        "justification": "Essa é a data oficial encontrada nos registros do arquivo histórico.",
+        "votes_normal": 15,
+        "votes_revisor": 5,
+        "selected": false,
+        "timestamp": "2024-03-12T13:14:02Z",
+        "responses": [
+          {
+            "id_user": 23,
+            "message": "Tenho certeza que essa data está incorreta. O design do documento sugere que seja mais antigo.",
+            "votes": 6,
+            "timestamp": "2024-03-12T16:30:45Z",
+            "responses": [
+              {
+                "id_user": 34,
+                "message": "Concordo com o comentário anterior. A tipografia usada no documento não era comum na década de 70.",
+                "votes": 2,
+                "timestamp": "2024-03-13T09:22:19Z",
+                "responses": []
+              },
+              {
+                "id_user": 47,
+                "message": "De acordo com o contexto histórico do conteúdo, deveria ser pelo menos uma década antes.",
+                "votes": 10,
+                "timestamp": "2024-03-14T11:47:33Z",
+                "responses": [
+                  {
+                    "id_user": 52,
+                    "message": "Exatamente! Além disso, a referência a certos eventos políticos só faz sentido se for antes de 1970.",
+                    "votes": 4,
+                    "timestamp": "2024-03-15T14:15:50Z",
+                    "responses": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id_user": 29,
+            "message": "A data está correta. Eu verifiquei com outras fontes externas ao arquivo e todas confirmam o 12 de Julho de 1979.",
+            "votes": 3,
+            "timestamp": "2024-03-16T17:21:07Z",
+            "responses": [
+              {
+                "id_user": 31,
+                "message": "Pode fornecer essas fontes? Seria importante para validar a informação.",
+                "votes": 1,
+                "timestamp": "2024-03-17T19:35:50Z",
+                "responses": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

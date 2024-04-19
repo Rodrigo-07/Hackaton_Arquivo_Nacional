@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ResponseCard from "../comment_reponse/comment_response";
-const CommentCard = ({ comment }) => {
+
+export default function CommentCard(comment){
     const comments = {
         "comments": [
             {
@@ -115,4 +116,3 @@ const CommentCard = ({ comment }) => {
         </div>
     );
 };
-export default CommentCard;

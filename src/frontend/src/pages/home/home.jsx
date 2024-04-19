@@ -1,19 +1,18 @@
 import React from "react";
 import ArchiveCard from "../../components/archive_card/archive_card";
 import BottomBar from "../../components/bottom_bar/bottom_bar";
+import Header from "../../components/header/header";
 
 // página inicial do aplicativo
 function HomePage(){
     return( 
-        <main className="container mx-auto bg-bage-bg">
-            <header className="">
-
-            </header>
-            <section className=" container mx-auto columns-2">
+        <main className="w-full bg-bage-bg">
+            <Header/>
+            <section className="top-4 p-10 container mx-auto columns-2">
                 <ArchiveCard/>
                 <ArchiveCard/>
             </section>
-            <footer>
+            <footer className="fixed bottom-0">
                 <BottomBar/>
             </footer>
         </main>

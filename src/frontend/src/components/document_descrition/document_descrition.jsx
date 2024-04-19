@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import FormSuggestion from '../forms_suggestion/forms_suggestion';
+import Tabs from '../tabs/tabs';
 import SuggestionCard from '../suggestion_card/suggestion_card';
 
 function DocumentDescriptionPage({ documentId }) {
@@ -49,8 +50,8 @@ function DocumentDescriptionPage({ documentId }) {
 
         <div className="min-h-screen bg-gray-100 p-4">
     {/* /* Navegação por abas */}
-    <div className="center flex justify-center mb-4">
-        <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+    <div className="center flex flex-col justify-center mb-4">
+        <Tabs tabs={["Título","Data","Contexto"]} selectedTab={activeTab} setSelectedTab={setActiveTab} size={"w-full"} />
     </div>
 
     {/* Formulário de sugestão */}
@@ -65,28 +66,5 @@ function DocumentDescriptionPage({ documentId }) {
         </div>
     );
 }
-
-// Botão da aba
-function TabButton({ label, isActive, setActiveTab }) {
-    return (
-        <button
-          onClick={() => setActiveTab(label.toLowerCase())}
-          className={`px-4 py-2 text-sm font-medium rounded-t-lg border-b-2 ${ isActive ? 'bg-red-500 text-white border-red-500' : 'bg-white text-gray-500 border-transparent'
-          } focus:outline-none`}
-        >
-          {label}
-        </button>
-    );
-}
-
-function Tabs({ activeTab, setActiveTab }) {
-    return (
-      <div className="flex space-x-2 border-b border-gray-300">
-        <TabButton label="title" isActive={activeTab === 'title'} setActiveTab={setActiveTab} />
-        <TabButton label="date" isActive={activeTab === 'date'} setActiveTab={setActiveTab} />
-        <TabButton label="context" isActive={activeTab === 'context'} setActiveTab={setActiveTab} />
-      </div>
-    );
-  }
 
 export default DocumentDescriptionPage;

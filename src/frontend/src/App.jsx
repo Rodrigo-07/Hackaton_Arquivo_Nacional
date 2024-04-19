@@ -7,17 +7,12 @@ import HomePage from './pages/home/home';
 import PerfilPage from './pages/profile/profile';
 import CommentCard from './components/comments_card/comments_card';
 import CompetitionsPage from './pages/competitions/competitions';
+import RankPage from './pages/rank/rank';
 import TaggingPage from "./components/page_add_tag/page_add_tag";
 
 import Header from './components/header/header';
 import BottomBar from './components/bottom_bar/bottom_bar';
 
-
-let competitionsData = [{
-  "date"  : "02/05/1994",
-  "title" : "BANANA",
-  "description" : "BANANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAssssssssssssssssssssssssssssssssssssssss"
-}]
 
 function App() {
   return (
@@ -27,11 +22,11 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/search' element={<div/>}/>
-        <Route path='/ranking' element={<div/>}/>
+        <Route path='/ranking' element={<RankPage/>}/>
         <Route path='/ranking-competitions' element={<div/>}/>
         <Route path='/rewards' element={<div/>}/>
         <Route path='/comments' element={<CommentCard/>}/>
-        <Route path='/competitions' element={<CompetitionsPage competitions={competitionsData} />} />
+        <Route path='/competitions' element={<CompetitionsPage/>} />
         <Route path='/profile' element={<PerfilPage/>} />
         <Route path='/tagging-page/:document_id' element={<TaggingPage/>} />
       </Routes>

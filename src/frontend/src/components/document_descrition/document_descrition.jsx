@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import FormSuggestion from '../forms_suggestion/forms_suggestion';
 import SuggestionCard from '../suggestion_card/suggestion_card';
 
-function DocumentDescriptionPage() {
+function DocumentDescriptionPage({ documentId }) {
+  const [documentInfo, setDocumentInfo] = useState(null);
   const [activeTab, setActiveTab] = useState('title');
+
+  // Carrega informações do documento ao montar o componente
+  useEffect(() => {
+    const fetchDocumentInfo = async () => {
+      try {
+        const response = await axios.get(`http://127.0.0.1:8000/documents/${documentId}`);
+        setDocumentInfo(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar informações do documento:', error);
+      }
+    };
+
+    fetchDocumentInfo();
+  }, [documentId]);
 
   // Simulação das palavras-chave e imagem do documento
   const keywords = "Futebol, Time, Jogo";
-  const documentImage = "url-da-imagem-aqui";
 
   // Função para manipular o envio do formulário de sugestões
   const handleSubmitSuggestion = (data) => {
@@ -26,7 +41,9 @@ function DocumentDescriptionPage() {
 
         {/* Seção de imagem e palavras-chave */}
         <div className="bg-white p-4 shadow rounded mb-4 text-center">
-            <img src={documentImage} alt="Documento" className="mx-auto mb-3" />
+            {documentInfo && documentInfo.path && (
+              <img src={documentInfo.path} alt="Documento" className="mx-auto mb-3" />
+            )}
             <p className="text-gray-800 font-semibold">Palavras-chave: {keywords}</p>
         </div>
 
@@ -37,7 +54,7 @@ function DocumentDescriptionPage() {
     </div>
 
     {/* Formulário de sugestão */}
-      <FormSuggestion type={activeTab} onSubmit={handleSubmitSuggestion} />
+      <FormSuggestion type={activeTab} onSubmit={handleSubmitSuggestion} documentId={documentId}/>
 
       {/* TODO Caixas de sugestões/discussões !!!!!!!!!! */}
       {/* {filteredDiscussions && filteredDiscussions.map((discussion) => (

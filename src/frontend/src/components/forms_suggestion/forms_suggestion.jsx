@@ -1,25 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-// Este componente renderiza diferentes campos baseados no prop 'type'
-function FormSuggestion({ type, onSubmit }) {
+function FormSuggestion({ type, onSubmit, documentId }) {
+  const [documentInfo, setDocumentInfo] = useState(null);
   const [suggestion, setSuggestion] = useState('');
   const [justification, setJustification] = useState('');
 
-  console.log(type);
+  useEffect(() => {
+    const fetchDocumentInfo = async () => {
+      try {
+        const response = await axios.get(`http://127.0.0.1:8000/documents/${documentId}`);
+        setDocumentInfo(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar informações do documento:', error);
+      }
+    };
+
+    fetchDocumentInfo();
+  }, [documentId]);
+
+  // Função para enviar os dados para o backend
+  const sendSuggestion = () => {
+    axios.put(`http://127.0.0.1:8000/documents/${documentId}`, {
+      id: documentId,
+      data_type: documentInfo.data_type,
+      path: documentInfo.path,
+      title: type === 'title' ? suggestion : documentInfo.title,
+      date: type === 'date' ? suggestion : documentInfo.date,
+      content: type === 'context' ? suggestion : documentInfo.content,
+      tags: documentInfo.tags
+    })
+    .then(response => {
+      console.log('Dados enviados com sucesso:', response.data);
+      // Você pode adicionar lógica adicional aqui, se necessário
+    })
+    .catch(error => {
+      console.error('Erro ao enviar dados:', error);
+      // Lógica de tratamento de erro, se necessário
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({
-      type,
-      suggestion,
-      justification
-    });
+    // Enviar os dados para o backend
+    sendSuggestion();
     // Limpar o formulário após o envio
     setSuggestion('');
     setJustification('');
   };
 
-  // Renderiza o campo apropriado baseado no tipo de sugestão
   const renderSuggestionField = () => {
     switch (type) {
       case 'title':

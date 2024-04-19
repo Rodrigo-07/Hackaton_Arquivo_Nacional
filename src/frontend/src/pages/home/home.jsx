@@ -11,6 +11,14 @@ function HomePage(){
 
             </header>
             <Tabs/>
+            <ArchiveCard/>
+            
+            <ArchiveCard/>
+            
+            <ArchiveCard/>
+            
+            <ArchiveCard/>
+            
             <footer>
                 <BottomBar/>
             </footer>

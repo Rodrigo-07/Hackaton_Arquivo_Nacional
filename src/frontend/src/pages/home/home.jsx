@@ -7,7 +7,6 @@ import Tabs from "../../components/tabs/tabs";
 import TaggingPage from "../../components/page_add_tag/page_add_tag";
 
 function HomePage() {
-  const [documents, setDocuments] = useState([]);
   const [selectedDocumentId, setSelectedDocumentId] = useState(null);
   const [documentsWithEmptyTags, setDocumentsWithEmptyTags] = useState([]);
   const [documentsWithTags, setDocumentsWithTags] = useState([]);
@@ -70,7 +69,13 @@ function HomePage() {
         )}
       </div>
 
-      {selectedDocumentId && <TaggingPage documentId={selectedDocumentId} />}
+      {selectedDocumentId && documentsWithEmptyTags.find(document => document.id === selectedDocumentId) && (
+        <TaggingPage documentId={selectedDocumentId} />
+      )}
+
+      {selectedDocumentId && documentsWithTags.find(document => document.id === selectedDocumentId) && (
+        console.log("Documento com tags selecionado:", selectedDocumentId)
+      )}
 
       <BottomBar />
     </main>

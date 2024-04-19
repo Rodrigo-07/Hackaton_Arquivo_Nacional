@@ -12,23 +12,23 @@ export default function BottomBar() {
                 <div className="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">
                     <button type="button" className="inline-flex flex-col items-center justify-center px-5 hover:bg-red-400  group" onClick={()=> navigate("/")}>
                         <FontAwesomeIcon icon={faNewspaper} size="xl" className="text-slate-50" />
-                        <span className="text-sm text-white group-hover:text-slate-700 ">Classificar</span>
+                        <span className="text-sm text-white ">Classificar</span>
                     </button>
                     <button type="button" className="inline-flex flex-col items-center justify-center px-5 hover:bg-red-400 group" onClick={()=>navigate("/search")}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" className="text-slate-50" />
-                        <span className="text-sm text-white group-hover:text-slate-700 ">Pesquisa</span>
+                        <span className="text-sm text-white ">Pesquisa</span>
                     </button>
                     <button type="button" className="inline-flex flex-col items-center justify-center px-5 hover:bg-red-400 group" onClick={()=> navigate("/ranking")}>
                         <FontAwesomeIcon icon={faRankingStar} size="xl" className="text-slate-50" />
-                        <span className="text-sm text-white  group-hover:text-slate-700 ">Ranking</span>
+                        <span className="text-sm text-white  ">Ranking</span>
                     </button>
                     <button type="button" className="inline-flex flex-col items-center justify-center px-5 hover:bg-red-400  group" onClick={()=>navigate("/rewards")}>
                         <FontAwesomeIcon icon={faTicket} size="xl" className="text-slate-50" />
-                        <span className="text-sm text-white group-hover:text-slate-700 ">Prêmios</span>
+                        <span className="text-sm text-white  ">Prêmios</span>
                     </button>
                     <button type="button" className="inline-flex flex-col items-center justify-center px-5 hover:bg-red-400  group" onClick={()=>navigate("/profile")}>
                         <FontAwesomeIcon icon={faUser} size="xl" className="text-slate-50" />
-                        <span className="text-sm text-white group-hover:text-slate-700 ">Perfil</span>
+                        <span className="text-sm text-white ">Perfil</span>
                     </button>
                 </div>
             </nav>

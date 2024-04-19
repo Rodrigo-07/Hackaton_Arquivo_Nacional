@@ -10,8 +10,8 @@ export default function RankPage(){
         <div className='w-full flex flex-col justify-center items-center'>
             <div className='w-full flex flex-col justify-center items-center'>
                 <div className='w-11/12 flex flex-col justify-center items-center'>
-                    <div className='font-semibold text-gray-800 text-2xl'>Ranking Mensal</div>
-                    <div className='font-semibold text-gray-800 text-xl'>3 dias restantes</div>
+                    <div className='font-bold text-gray-800  text-2xl'>Ranking Mensal</div>
+                    <div className='font-medium text-gray-700 text-xl'>3 dias restantes</div>
                 </div>
             </div>
 

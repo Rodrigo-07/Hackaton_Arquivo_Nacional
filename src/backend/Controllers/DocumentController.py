@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, HTTPException
 from Models.DocumentModel import DocumentModel
 from Services.DocumentService import DocumentService
@@ -18,6 +19,15 @@ async def get_document(document_id: int):
         return document.dict()
     else:
         raise HTTPException(status_code=404, detail="Document not found")
+
+# Rota para obter todos os documentos
+@router.get("/documents/", response_model=List[DocumentModel])
+async def get_all_documents():
+    documents = DocumentService.get_all_documents()
+    if documents:
+        return documents
+    else:
+        return []
 
 # Rota para atualizar um documento pelo ID
 @router.put("/documents/{document_id}")

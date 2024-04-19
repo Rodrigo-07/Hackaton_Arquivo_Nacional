@@ -11,11 +11,7 @@ function HomePage(){
         <main className="w-full bg-bage-bg">
             <Header/>
             <Tabs/>
-            <section className="top-4 p-10 container mx-auto columns-2">
-                <ArchiveCard/>
-                <ArchiveCard/>
-            </section>
-            <footer className="fixed bottom-0">
+            <footer>
                 <BottomBar/>
             </footer>
         </main>

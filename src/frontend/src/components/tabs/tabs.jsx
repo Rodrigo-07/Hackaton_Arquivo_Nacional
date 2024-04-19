@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 
-export default function Tabs() {
+export default function Tabs({tabs}) {
     // State to track the active tab
-    const [activeTab, setActiveTab] = useState("Classificação");
-
+    const [activeTab, setActiveTab] = useState(tabs[0]);
     // Function to change the active tab
     const handleTabClick = (tab) => {
         setActiveTab(tab);
     };
 
-    // List of tabs
-    const tabs = ["Classificação", "Descrição"];
 
     return (
         <div className="flex justify-center mb-8"> {/* Center the tabs container in the middle of the page */}

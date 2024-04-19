@@ -74,7 +74,7 @@ function DocumentDescriptionPage() {
         )}
         {activeTab === 'Data' && (
           <div>
-            {data_comments.map((comment) => (<CommentCard comment={comment} />))}}
+            {data_comments.map((comment) => (<CommentCard comment={comment} />))}
           </div>
         )}
         {activeTab === 'Contexto' && (

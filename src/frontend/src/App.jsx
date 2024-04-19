@@ -9,6 +9,7 @@ import CommentCard from './components/comments_card/comments_card';
 import CompetitionsPage from './pages/competitions/competitions';
 import RankPage from './pages/rank/rank';
 import TaggingPage from "./components/page_add_tag/page_add_tag";
+import ClassificationPage from "./pages/classification/classification";
 
 import Header from './components/header/header';
 import BottomBar from './components/bottom_bar/bottom_bar';
@@ -21,6 +22,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
+        <Route path='/classify/:document_id' element={<ClassificationPage/>}/>
         <Route path='/search' element={<div/>}/>
         <Route path='/ranking' element={<RankPage/>}/>
         <Route path='/ranking-competitions' element={<div/>}/>

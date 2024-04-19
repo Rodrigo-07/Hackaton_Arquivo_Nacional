@@ -40,6 +40,10 @@ function HomePage() {
     navigate(`/tagging-page/${id}`);
   };
 
+  const handleTagCardClick = (id) => {
+    navigate(`/classify/${id}`);
+  };
+
   return (
     <main className="w-full bg-bage-bg">
       <Tabs tabs={["Classificação", "Descrição"]} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
@@ -63,7 +67,7 @@ function HomePage() {
               title={document.title}
               subtitle={document.date}
               image={document.path}
-              onClick={handleCardClick}
+              onClick={handleTagCardClick}
             />
           ))
         )}

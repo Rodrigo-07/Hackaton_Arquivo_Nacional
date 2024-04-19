@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, Navigate } from 'react-router-dom';
+
 
 
 // Função de embaralhamento Fisher-Yates
@@ -22,7 +23,7 @@ function shuffleArray(array) {
     return array;
   }
 
-function TaggingPage() {
+export default function TaggingPage() {
     let document_id= useParams().document_id;
     // Setup inicial de estados
     const [selectedTags, setSelectedTags] = useState([]);
@@ -31,6 +32,11 @@ function TaggingPage() {
     const [existingTags, setExistingTags] = useState([]);
     const [file_path, setFilePath] = useState('');
 
+    const navigation = useNavigate();
+
+    // function returnPreviusPage() {
+    //     navigation.goBack(); // Volta para a página anterior
+    // };
 
     const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
     const closeDropdown = () => setDropdownOpen(false);
@@ -179,7 +185,7 @@ function TaggingPage() {
     
         <div className="flex justify-between mt-4">
           <button
-            className="bg-red-600 text-white text-sm px-4 py-2 rounded shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50 transition ease-in duration-200">
+            className="bg-red-600 text-white text-sm px-4 py-2 rounded shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50 transition ease-in duration-200" onClick={() => navigation("/")}>
             Voltar
           </button>
           <button
@@ -193,5 +199,3 @@ function TaggingPage() {
   );
 
 }
-
-export default TaggingPage;

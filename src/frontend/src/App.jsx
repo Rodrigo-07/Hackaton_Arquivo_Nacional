@@ -9,6 +9,7 @@ import CommentCard from './components/comments_card/comments_card';
 import CompetitionsPage from './pages/competitions/competitions';
 import RankPage from './pages/rank/rank';
 import TaggingPage from "./components/page_add_tag/page_add_tag";
+import RewardsPage from './pages/rewards/rewards';
 import ClassificationPage from "./pages/classification/classification";
 import DocumentDescriptionPage from "./components/document_descrition/document_descrition";	
 
@@ -27,7 +28,7 @@ function App() {
         <Route path='/search' element={<div/>}/>
         <Route path='/ranking' element={<RankPage/>}/>
         <Route path='/ranking-competitions' element={<div/>}/>
-        <Route path='/rewards' element={<div/>}/>
+        <Route path='/rewards' element={<RewardsPage/>}/>
         <Route path='/comments' element={<CommentCard/>}/>
         <Route path='/competitions' element={<CompetitionsPage/>} />
         <Route path='/profile' element={<PerfilPage/>} />

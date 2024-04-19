@@ -19,7 +19,6 @@ const RankCard = ({ position, image, name, points }) => {
                 )}
                 {points && (
                     <div className={`font-bold text-xl md:text-2xl mx-4 ${position == 1 ? 'text-white' : 'text-gray-800'}`}>{points}</div>
-                )}
             </div>
         </div>
     );

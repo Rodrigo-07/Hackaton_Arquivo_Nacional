@@ -17,7 +17,7 @@ function HomePage() {
   useEffect(() => {
     const fetchDocuments = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/documents/");
+        const response = await axios.get("https://hackaton-arquivo-nacional-backend.onrender.com/documents/");
         const allDocuments = response.data;
 
         // tag vazia ou "None"

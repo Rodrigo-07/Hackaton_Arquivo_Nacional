@@ -9,7 +9,7 @@ function FormSuggestion({ type, onSubmit, documentId }) {
   useEffect(() => {
     const fetchDocumentInfo = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/documents/${documentId}`);
+        const response = await axios.get(`https://hackaton-arquivo-nacional-backend.onrender.com/documents/${documentId}`);
         setDocumentInfo(response.data);
       } catch (error) {
         console.error('Erro ao buscar informações do documento:', error);
@@ -21,7 +21,7 @@ function FormSuggestion({ type, onSubmit, documentId }) {
 
   // Função para enviar os dados para o backend
   const sendSuggestion = () => {
-    axios.put(`http://127.0.0.1:8000/documents/${documentId}`, {
+    axios.put(`https://hackaton-arquivo-nacional-backend.onrender.com/documents/${documentId}`, {
       id: documentId,
       data_type: documentInfo.data_type,
       path: documentInfo.path,

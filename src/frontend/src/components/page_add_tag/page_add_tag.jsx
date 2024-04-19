@@ -47,8 +47,8 @@ export default function TaggingPage() {
       try {
         console.log("Document ID:", document_id)
         const [response1, response2] = await Promise.all([
-          axios.get('http://127.0.0.1:8000/tags/'),
-          axios.get(`http://127.0.0.1:8000/documents/${document_id}`)
+          axios.get('https://hackaton-arquivo-nacional-backend.onrender.com/tags/'),
+          axios.get(`https://hackaton-arquivo-nacional-backend.onrender.com/${document_id}`)
         ]);
         console.log("file:", response2.data);
         let shuffledTags = shuffleArray(response1.data);
@@ -115,14 +115,14 @@ export default function TaggingPage() {
   // Enviar tags selecionadas para o backend
   const handleSubmit = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/documents/${document_id}`);
+      const response = await axios.get(`https://hackaton-arquivo-nacional-backend.onrender.com/documents/${document_id}`);
       const documentData = response.data;
 
       const tagsAsString = selectedTags.join(";");
 
       documentData.tags = tagsAsString;
 
-      await axios.put(`http://127.0.0.1:8000/documents/${document_id}`, documentData);
+      await axios.put(`https://hackaton-arquivo-nacional-backend.onrender.com/documents/${document_id}`, documentData);
 
       console.log("Tags atualizadas com sucesso!");
     } catch (error) {

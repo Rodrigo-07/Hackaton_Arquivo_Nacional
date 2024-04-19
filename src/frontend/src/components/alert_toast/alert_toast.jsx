@@ -1,65 +1,43 @@
-// import React, { useState, useEffect } from "react";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-
-// const AlertToast = ({ message, type, timeout = 3000 }) => {
-//     const [visible, setVisible] = useState(true);
-//     const icon = type === 'success' ? faCheckCircle : faTimesCircle;
-
-//     useEffect(() => {
-//         const timer = setTimeout(() => {
-//             setVisible(false);
-//         }, timeout);
-
-//         return () => clearTimeout(timer);
-//     }, [timeout]);
-
-//     if (!visible) {
-//         return null;
-//     }
-
-//     return (
-//         <div className={`fixed top-0 right-0 m-6 p-4 rounded shadow-lg bg-white z-50`}>
-//             <p className={type === 'success' ? 'text-20D468-500' : 'text-red-500'}>{message}</p>
-//             <div className="flex justify-end">
-//                 <span className="text-2xl">
-//                     <FontAwesomeIcon icon={icon} color={type === 'success' ? '#20D468' : '#E52207'} />
-//                 </span>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default AlertToast;
-
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
-const AlertToast = ({ message, type, timeout = 3000 }) => {
-    const [visible, setVisible] = useState(true);
+const AlertToast = ({ message, type, visible, close }) => {
     const icon = type === 'success' ? faCheckCircle : faTimesCircle;
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setVisible(false);
-        }, timeout);
-
-        return () => clearTimeout(timer);
-    }, [timeout]);
 
     if (!visible) {
         return null;
     }
 
-    return (
-        <div className={`flex justify-between absolute top-12 left-1/2 transform -translate-x-1/2 w-4/5 mx-auto p-3 rounded shadow-lg bg-white z-50 gap-1 transition-all duration-500 ease-in-out ${visible ? 'translate-y-0 opacity-95' : 'translate-y-[-50%] opacity-0'}`}>
-            <p className={type === 'success' ? 'text-green-1000' : 'text-red-500'}>{message}</p>
-                <span className="text-2xl flex">
-                    <FontAwesomeIcon icon={icon} color={type === 'success' ? '#20D468' : '#E52207'} />
-                </span>
-        </div>
-    );
+    else {
+        switch (type) {
+            case 'Denied':
+                return (<div class="flex items-center p-4 my-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50" role="alert">
+                    <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <div>
+                        <div>
+                            <span class="font-medium">Erro!</span>
+                        </div>
+                        <div>{message}</div>
+                    </div>
+                </div>)
+            case 'Sucesso':
+                return (
+                    <div class="flex items-center p-4 my-4 text-sm text-green-800 drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] rounded-lg bg-green-50  dark:text-green-400 dark:border-green-800" role="alert">
+                        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                        </svg>
+                        <div>
+                            <div>
+                                <span class="font-medium">Sucesso!</span>
+                            </div>
+                            <div>{message}</div>
+                        </div>
+                    </div>)
+        }
+    };
 }
 
 export default AlertToast;

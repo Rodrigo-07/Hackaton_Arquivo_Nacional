@@ -11,6 +11,7 @@ function HomePage(){
 
             </header>
             <Tabs/>
+            
             <footer>
                 <BottomBar/>
             </footer>

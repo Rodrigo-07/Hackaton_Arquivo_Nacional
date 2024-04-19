@@ -23,7 +23,8 @@ for filename in os.listdir(models_folder):
         # verifica se o modelo e o nome da tabela foram encontrados
         if table_name and model:
             # monta a consulta 
-            columns = ', '.join([f"{field.name} {field.type_.__name__}" for field in model.__fields__.values()])
+            # columns = ', '.join([f"{field.name} {field.type_.__name__}" for field in model.__fields__.values()])
+            columns = ', '.join([f"{field} {type(model.__annotations__[field]).__name__}" for field in model.__annotations__.keys()])
             create_table_sql = f"CREATE TABLE IF NOT EXISTS {table_name} ({columns})"
 
             cursor.execute(create_table_sql) # executa consulta e cria tabela

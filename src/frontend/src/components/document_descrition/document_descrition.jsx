@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import FormSuggestion from '../forms_suggestion/forms_suggestion';
 import Tabs from '../tabs/tabs';
-import SuggestionCard from '../suggestion_card/suggestion_card';
+import { useParams } from 'react-router-dom';
 
-function DocumentDescriptionPage({ documentId }) {
+function DocumentDescriptionPage() {
+  const documentId = useParams().document_id;
   const [documentInfo, setDocumentInfo] = useState(null);
   const [activeTab, setActiveTab] = useState('Título');
-
+  const navigate = useNavigate();
   // Carrega informações do documento ao montar o componente
   useEffect(() => {
     const fetchDocumentInfo = async () => {

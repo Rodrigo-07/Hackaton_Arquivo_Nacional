@@ -10,7 +10,6 @@ import CompetitionsPage from './pages/competitions/competitions';
 import RankPage from './pages/rank/rank';
 import TaggingPage from "./components/page_add_tag/page_add_tag";
 import RewardsPage from './pages/rewards/rewards';
-import ClassificationPage from "./pages/classification/classification";
 import DocumentDescriptionPage from "./components/document_descrition/document_descrition";	
 
 import Header from './components/header/header';

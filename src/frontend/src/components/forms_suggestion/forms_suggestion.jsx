@@ -24,10 +24,10 @@ function FormSuggestion({ type, onSubmit, documentId }) {
     axios.put(`https://hackaton-arquivo-nacional-backend.onrender.com/documents/${documentId}`, {
       id: documentId,
       data_type: documentInfo.data_type,
-      path: documentInfo.path,
-      title: type === 'title' ? suggestion : documentInfo.title,
-      date: type === 'date' ? suggestion : documentInfo.date,
-      content: type === 'context' ? suggestion : documentInfo.content,
+        path: documentInfo.path,
+        title: type === "Título" ? suggestion : documentInfo.title,
+        date: type === "Data" ? suggestion : documentInfo.date,
+        content: type === "Contexto" ? suggestion : documentInfo.content,
       tags: documentInfo.tags
     })
     .then(response => {

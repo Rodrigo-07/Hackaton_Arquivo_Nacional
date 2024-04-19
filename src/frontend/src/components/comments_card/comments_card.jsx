@@ -20,9 +20,6 @@ const CommentCard = ({ comment }) => {
                         "upvotes_normal": 9,
                         "upvotes_revisor": 1,
                         "downvote": 2,
-                        "responses": [
-                            "eajdassasas",
-                        ],
                     },
                     {
                         "id_user": 2,
@@ -30,9 +27,6 @@ const CommentCard = ({ comment }) => {
                         "upvotes_normal": 2,
                         "upvotes_revisor":3,
                         "downvote": 12,
-                        "responses": [
-                            "",
-                        ]
                     },
                 ]
             }
@@ -96,7 +90,8 @@ const CommentCard = ({ comment }) => {
 
         const updatedComments = [...comments.comments];
         updatedComments[0].responses[responseIndex] = updatedResponse;
-        setComments({ comments: updatedComments });
+        // Update state for responses
+        // setComments({ comments: updatedComments }); // Remove this line
     };
 
     return (

@@ -132,7 +132,7 @@ export default function TaggingPage() {
 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100">
+    <div className="flex flex-col items-center justify-start min-h-screen p-4 bg-gray-100">
       <div className="w-full max-w-md bg-gray rounded-lg shadow p-6">
         <img
           src={file_path} // Substitua com a URL da imagem real
@@ -163,17 +163,17 @@ export default function TaggingPage() {
       />
     </div>
     {dropdownOpen && (
-      <div className="absolute left-0 right-0 z-10 mt-1 bg-white border rounded shadow">
-        <ul>
-          {filteredTags.map(tag => (
-            <li
-              key={tag}
-              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-              onClick={() => handleTagClick(tag)}
-            >
-              {tag}
-            </li>
-          ))}
+      <div className="absolute left-0 right-0 z-10 mt-1 max-h-48 overflow-y-auto bg-white border rounded shadow">
+      <ul>
+        {filteredTags.map(tag => (
+          <li
+            key={tag}
+            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+            onClick={() => handleTagClick(tag)}
+          >
+            {tag}
+          </li>
+        ))}    
         </ul>
       </div>
     )}

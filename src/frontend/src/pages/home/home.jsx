@@ -3,6 +3,7 @@ import axios from "axios";
 import ArchiveCard from "../../components/archive_card/archive_card";
 import BottomBar from "../../components/bottom_bar/bottom_bar";
 import Tabs from "../../components/tabs/tabs";
+import DocumentDescription from "../../components/document_descrition/document_descrition";
 import TaggingPage from "../../components/page_add_tag/page_add_tag"
 import { useNavigate } from "react-router-dom";
 
@@ -73,7 +74,7 @@ function HomePage() {
       )}
 
       {selectedDocumentId && documentsWithTags.find(document => document.id === selectedDocumentId) && (
-        console.log("Documento com tags selecionado:", selectedDocumentId)
+          <DocumentDescription documentId={selectedDocumentId} />
       )}
 
       <BottomBar />

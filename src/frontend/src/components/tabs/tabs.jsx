@@ -13,7 +13,7 @@ export default function Tabs() {
     const tabs = ["Classificação", "Descrição"];
 
     return (
-        <div className="w-full flex justify-center mb-8"> {/* Center the tabs container in the middle of the page */}
+        <div className="flex justify-center mb-8"> {/* Center the tabs container in the middle of the page */}
             <div className="md:w-2/4 w-3/4">
                 <div className="flex flex-wrap align-middle p-1 list-none rounded-lg bg-blue-gray-50/60 justify-center items-center ">
                     {tabs.map((tab) => (

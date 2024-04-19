@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
+
 
 // Função de embaralhamento Fisher-Yates
 function shuffleArray(array) {
@@ -20,12 +22,14 @@ function shuffleArray(array) {
     return array;
   }
 
-function TaggingPage({ documentId }) {
+function TaggingPage() {
+    let document_id= useParams().document_id;
     // Setup inicial de estados
     const [selectedTags, setSelectedTags] = useState([]);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [inputValue, setInputValue] = useState('');
     const [existingTags, setExistingTags] = useState([]);
+    const [file_path, setFilePath] = useState('');
 
 
     const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
@@ -34,16 +38,25 @@ function TaggingPage({ documentId }) {
 
     useEffect(() => {
         const fetchAndShuffleTags = async () => {
-            try {
-                const response = await axios.get('http://127.0.0.1:8000/tags/');
-                let shuffledTags = shuffleArray(response.data);
-                shuffledTags = shuffledTags.slice(0, 2000).map(tag => tag.tag_name); // Pegue apenas os primeiros 2000
-                console.log("Tags embaralhadas:", shuffledTags);
-                setExistingTags(shuffledTags);
-            } catch (error) {
-                console.error("Erro ao buscar tags:", error);
-            }
-        };
+          try {
+            console.log("Document ID:", document_id)
+            const [response1, response2] = await Promise.all([
+                axios.get('http://127.0.0.1:8000/tags/'),
+                axios.get(`http://127.0.0.1:8000/documents/${document_id}`)
+            ]);
+            console.log("file:", response2.data);
+            let shuffledTags = shuffleArray(response1.data);
+            setFilePath(response2.data.path);
+            shuffledTags = shuffledTags.slice(0, 2000).map(tag => tag.tag_name); // Pegue apenas os primeiros 2000
+            console.log("Tags embaralhadas:", shuffledTags);
+            setExistingTags(shuffledTags);
+        
+            // Você pode fazer algo com response2.data aqui
+        
+        } catch (error) {
+            console.error("Erro ao buscar tags:", error);
+        }
+    };
 
         fetchAndShuffleTags();
     }, []);
@@ -96,14 +109,14 @@ function TaggingPage({ documentId }) {
     // Enviar tags selecionadas para o backend
     const handleSubmit = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/documents/${documentId}`);
+        const response = await axios.get(`http://127.0.0.1:8000/documents/${document_id}`);
         const documentData = response.data;
     
         const tagsAsString = selectedTags.join(";");
     
         documentData.tags = tagsAsString;
     
-        await axios.put(`http://127.0.0.1:8000/documents/${documentId}`, documentData);
+        await axios.put(`http://127.0.0.1:8000/documents/${document_id}`, documentData);
     
         console.log("Tags atualizadas com sucesso!");
       } catch (error) {
@@ -116,7 +129,7 @@ function TaggingPage({ documentId }) {
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100">
       <div className="w-full max-w-md bg-gray rounded-lg shadow p-6">
         <img
-          src="https://fakeimg.pl/600x400" // Substitua com a URL da imagem real
+          src={file_path} // Substitua com a URL da imagem real
           alt="Document"
           className="mb-4 w-full h-32 object-cover rounded"
         />

@@ -7,6 +7,7 @@ import HomePage from './pages/home/home';
 import PerfilPage from './pages/perfil/perfil';
 import CommentCard from './components/comments_card/comments_card';
 import CompetitionsPage from './pages/competitions/competitions';
+import TaggingPage from "./components/page_add_tag/page_add_tag";
 
 import Header from './components/header/header';
 import BottomBar from './components/bottom_bar/bottom_bar';
@@ -28,6 +29,7 @@ function App() {
         <Route path='/comments' element={<CommentCard/>}/>
         <Route path='/competitions' element={<CompetitionsPage competitions={competitionsData} />} />
         <Route path='/user_perfil' element={<PerfilPage/>} />
+        <Route path='/tagging-page/:document_id' element={<TaggingPage/>} />
       </Routes>
     </BrowserRouter>
     <BottomBar/>

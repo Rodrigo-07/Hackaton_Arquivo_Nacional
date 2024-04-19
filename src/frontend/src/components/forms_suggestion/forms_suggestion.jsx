@@ -51,7 +51,7 @@ function FormSuggestion({ type, onSubmit, documentId }) {
 
   const renderSuggestionField = () => {
     switch (type) {
-      case 'title':
+      case 'Título':
         return (
           <input
             type="text"
@@ -59,27 +59,27 @@ function FormSuggestion({ type, onSubmit, documentId }) {
             onChange={(e) => setSuggestion(e.target.value)}
             placeholder="Sugira um título..."
             required
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
+            className="py-2 pl-2 mt-1 block w-full drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] rounded-md shadow-sm"
           />
         );
-      case 'date':
+      case 'Data':
         return (
           <input
             type="date"
             value={suggestion}
             onChange={(e) => setSuggestion(e.target.value)}
             required
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
+            className="py-2 pl-2 mt-1 block w-full drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] rounded-md shadow-sm"
           />
         );
-      case 'context':
+      case 'Contexto':
         return (
           <textarea
             value={suggestion}
             onChange={(e) => setSuggestion(e.target.value)}
             placeholder="Descreva o contexto..."
             required
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
+            className="py-2 pl-2 mt-1 block w-full drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] rounded-md shadow-sm"
           />
         );
       default:
@@ -90,13 +90,13 @@ function FormSuggestion({ type, onSubmit, documentId }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-base font-semibold text-gray-700 ">
           {type.charAt(0).toUpperCase() + type.slice(1)}:
         </label>
         {renderSuggestionField()}
       </div>
       <div>
-        <label htmlFor="justification" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="justification" className="block text-base font-semibold text-gray-700">
           Justificativa:
         </label>
         <textarea
@@ -105,7 +105,7 @@ function FormSuggestion({ type, onSubmit, documentId }) {
           onChange={(e) => setJustification(e.target.value)}
           rows="4"
           required
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
+          className="py-2 pl-2 mt-1 block w-full drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] rounded-md shadow-sm"
           placeholder="Escreva sua justificativa..."
         ></textarea>
       </div>

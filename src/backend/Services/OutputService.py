@@ -1,18 +1,43 @@
-from Data.DBManager import DBManager
+import sqlite3
+from datetime import date
+from Models.OutputModel import OutputModel
+
+DATABASE_PATH = 'Data/database/db.sqlite'
 
 class OutputService:
-    def __init__(self, db_manager: DBManager):
-        self.db_manager = db_manager
-        self.table_name = "tbl_outputs"
+    @staticmethod
+    def create_output(output: OutputModel):
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "INSERT INTO tbl_outputs (id, title, date, content, tags) VALUES (?, ?, ?, ?, ?)",
+                (output.id, output.title, output.date, output.content, output.tags)
+            )
+            conn.commit()
 
-    def create_output(self, **kwargs):
-        self.db_manager.create_record(self.table_name, **kwargs)
+    @staticmethod
+    def get_output_by_id(output_id: int) -> OutputModel:
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM tbl_outputs WHERE id=?", (output_id,))
+            row = cursor.fetchone()
+            if row:
+                return OutputModel(**dict(row))
 
-    def get_output_by_id(self, output_id: int):
-        return self.db_manager.get_record_by_id(self.table_name, output_id)
+    @staticmethod
+    def update_output(output_id: int, output: OutputModel):
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "UPDATE tbl_outputs SET title=?, date=?, content=?, tags=? WHERE id=?",
+                (output.title, output.date, output.content, output.tags, output_id)
+            )
+            conn.commit()
 
-    def update_output(self, output_id: int, **kwargs):
-        self.db_manager.update_record_by_id(self.table_name, output_id, **kwargs)
-
-    def delete_output(self, output_id: int):
-        self.db_manager.delete_record_by_id(self.table_name, output_id)
+    @staticmethod
+    def delete_output(output_id: int):
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM tbl_outputs WHERE id=?", (output_id,))
+            conn.commit()

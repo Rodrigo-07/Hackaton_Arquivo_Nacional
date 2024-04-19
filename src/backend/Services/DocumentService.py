@@ -1,21 +1,44 @@
-from Data.DBManager import DBManager
+import sqlite3
+from pydantic import BaseModel
+from typing import List, Optional
+from Models.DocumentModel import DocumentModel
+
+DATABASE_PATH = 'Data/database/db.sqlite'
 
 class DocumentService:
-    def __init__(self, db_manager: DBManager):
-        self.db_manager = db_manager
-        self.table_name = "tbl_documents"
-    
-    def create_document(self, **kwargs):
-        self.db_manager.create_record(self.table_name, **kwargs)
-    
-    def get_document_by_id(self, document_id):
-        return self.db_manager.get_record_by_id(self.table_name, document_id)
+    @staticmethod
+    def create_document(document: DocumentModel):
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "INSERT INTO tbl_documents (id, data_type, path) VALUES (?, ?, ?)",
+                (document.id, document.data_type, document.path)
+            )
+            conn.commit()
 
-    def get_all_documents(self):
-        return self.db_manager.get_all_records(self.table_name)
+    @staticmethod
+    def get_document_by_id(document_id: int) -> DocumentModel:
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM tbl_documents WHERE id=?", (document_id,))
+            row = cursor.fetchone()
+            if row:
+                return DocumentModel(**dict(row))
 
-    def update_document_by_id(self, document_id, **kwargs):
-        self.db_manager.update_record_by_id(self.table_name, document_id, **kwargs)
+    @staticmethod
+    def update_document(document_id: int, document: DocumentModel):
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "UPDATE tbl_documents SET data_type=?, path=? WHERE id=?",
+                (document.data_type, document.path, document_id)
+            )
+            conn.commit()
 
-    def delete_document_by_id(self, document_id):
-        self.db_manager.delete_record_by_id(self.table_name, document_id)
+    @staticmethod
+    def delete_document(document_id: int):
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM tbl_documents WHERE id=?", (document_id,))
+            conn.commit()

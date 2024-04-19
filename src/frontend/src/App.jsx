@@ -12,11 +12,11 @@ import Header from './components/header/header';
 import BottomBar from './components/bottom_bar/bottom_bar';
 
 
-let competitionsData = {
-  "data"  : "02/05/1994",
+let competitionsData = [{
+  "date"  : "02/05/1994",
   "title" : "BANANA",
-  "description" : "BANANAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-}
+  "description" : "BANANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAssssssssssssssssssssssssssssssssssssssss"
+}]
 
 function App() {
   return (
@@ -26,7 +26,8 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/comments' element={<CommentCard/>}/>
-        <Route path='/competitions' element={<CompetitionsPage/>} competitions={competitionsData}/>        <Route path='/user_perfil' element={<PerfilPage/>} />
+        <Route path='/competitions' element={<CompetitionsPage competitions={competitionsData} />} />
+        <Route path='/user_perfil' element={<PerfilPage/>} />
       </Routes>
     </BrowserRouter>
     <BottomBar/>

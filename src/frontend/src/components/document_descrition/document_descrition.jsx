@@ -6,7 +6,7 @@ import SuggestionCard from '../suggestion_card/suggestion_card';
 
 function DocumentDescriptionPage({ documentId }) {
   const [documentInfo, setDocumentInfo] = useState(null);
-  const [activeTab, setActiveTab] = useState('title');
+  const [activeTab, setActiveTab] = useState('Título');
 
   // Carrega informações do documento ao montar o componente
   useEffect(() => {

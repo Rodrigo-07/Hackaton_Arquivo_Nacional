@@ -1,8 +1,6 @@
 import { Fragment, useState } from 'react';
 import { Menu } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { useEffect } from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
@@ -37,7 +35,7 @@ useEffect(() => {
 }, [xp]);
 
   return (
-    <main className="container h-screen"> 
+    <main className="container h-fit"> 
         <section className="user-infos container mt-12 grid-rows-3 text-center">
             <div className="">
             <img 

@@ -15,7 +15,10 @@ export default function PerfilPage({ user_id, user_name, user_foto, user_role })
     <main className="container h-screen"> 
         <section className="user-infos container mt-12 grid-rows-3 text-center">
             <div className="">
-            <img src={user_foto} alt="user foto"  className="rounded-full m-auto"/>
+            <img 
+            src="https://i.ytimg.com/vi/MX7BW-JV0VE/hq2.jpg?sqp=-oaymwEoCOADEOgC8quKqQMcGADwAQH4Ad4DgALgA4oCDAgAEAEYciBLKDowDw==&rs=AOn4CLB2OgvQ6cTaQLqAJZgz64R7BOpXAQ " // iremos utilizar um mock devido ao sistema complexo de login e usuário,mas basta puxar do parâmetro a imagem do usuário e funcionará 
+            alt="user foto"  
+            className="rounded-full m-auto"/>
             </div>
             <div className="mt-4">
             <h1 className='text-3xl'>{user_name}</h1>

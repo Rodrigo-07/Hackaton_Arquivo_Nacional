@@ -26,13 +26,17 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
+        <Route path='/search' element={<div/>}/>
+        <Route path='/ranking' element={<div/>}/>
+        <Route path='/ranking-competitions' element={<div/>}/>
+        <Route path='/rewards' element={<div/>}/>
         <Route path='/comments' element={<CommentCard/>}/>
         <Route path='/competitions' element={<CompetitionsPage competitions={competitionsData} />} />
-        <Route path='/user_perfil' element={<PerfilPage/>} />
+        <Route path='/profile' element={<PerfilPage/>} />
         <Route path='/tagging-page/:document_id' element={<TaggingPage/>} />
       </Routes>
+      <BottomBar/>
     </BrowserRouter>
-    <BottomBar/>
     </div>
   );
 }

@@ -33,7 +33,7 @@ function HomePage() {
     };
 
     fetchDocuments();
-  }, []);
+  }, [documentsWithEmptyTags, documentsWithTags]);
 
   const handleCardClick = (id) => {
     navigate(`/tagging-page/${id}`);

@@ -28,7 +28,7 @@ function FormSuggestion({ type, onSubmit, documentId }) {
   const sendSuggestion = () => {
     axios.put(`http://127.0.0.1:8000/documents/${documentId}`, {
       id: documentId,
-      data_type: documentInfo.data_type,
+      data_type:[]  ,
       path: documentInfo.path,
       title: type === "Título" ? suggestion : documentInfo.title,
       date: type === "Data" ? suggestion : documentInfo.date,

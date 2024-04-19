@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import { Menu } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import Header from "../../components/header/header";
 import BottomBar from '../../components/bottom_bar/bottom_bar';
 
@@ -31,7 +32,7 @@ export default function PerfilPage({ user_id, user_name, user_foto, user_role })
                     className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                     >
                     Actions
-                    <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+                    <FontAwesomeIcon icon= {faChevronDown} className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                     </Menu.Button>
                 </div>
                 <Menu.Items
@@ -77,7 +78,7 @@ export default function PerfilPage({ user_id, user_name, user_foto, user_role })
                     className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                     >
                     Actions
-                    <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+                    <FontAwesomeIcon icon= {faChevronDown} className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                     </Menu.Button>
                 </div>
                 <Menu.Items
@@ -123,7 +124,7 @@ export default function PerfilPage({ user_id, user_name, user_foto, user_role })
                     className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                     >
                     Actions
-                    <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+                    <FontAwesomeIcon icon= {faChevronDown} className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                     </Menu.Button>
                 </div>
                 <Menu.Items

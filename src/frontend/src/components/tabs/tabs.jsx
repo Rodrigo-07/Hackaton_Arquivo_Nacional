@@ -13,7 +13,7 @@ export default function Tabs({ tabs, selectedTab, setSelectedTab }) {
       <div className="md:w-2/4 w-3/4">
         <div className="flex flex-wrap align-middle p-1 list-none rounded-lg bg-blue-gray-50/60 justify-center items-center ">
           {tabs.map((tab) => (
-            <li key={tab} className="flex-auto mr-10 text-center">
+            <li key={tab} className="flex-auto md:mr-10 mr-4 text-center">
               <a
                 className={`flex items-center justify-center w-full py-1 mb-0 border-0 rounded-lg cursor-pointer transition-colors duration-300 ease-in-out sm:text-xl text-base ${
                   selectedTab === tab

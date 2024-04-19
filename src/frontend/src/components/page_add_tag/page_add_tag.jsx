@@ -20,7 +20,7 @@ function shuffleArray(array) {
     return array;
   }
 
-function TaggingPage() {
+function TaggingPage({ documentId }) {
     // Setup inicial de estados
     const [selectedTags, setSelectedTags] = useState([]);
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -94,10 +94,22 @@ function TaggingPage() {
     });
 
     // Enviar tags selecionadas para o backend
-    const handleSubmit = () => {
-        //TODO: Colocar lógica do backend para salvar as tags
-        console.log(selectedTags);
-    };
+    const handleSubmit = async () => {
+      try {
+        const response = await axios.get(`http://127.0.0.1:8000/documents/${documentId}`);
+        const documentData = response.data;
+    
+        const tagsAsString = selectedTags.join(";");
+    
+        documentData.tags = tagsAsString;
+    
+        await axios.put(`http://127.0.0.1:8000/documents/${documentId}`, documentData);
+    
+        console.log("Tags atualizadas com sucesso!");
+      } catch (error) {
+        console.error("Erro ao atualizar as tags:", error);
+      }
+    };    
 
 
   return (

@@ -8,6 +8,7 @@ import TaggingPage from "../../components/page_add_tag/page_add_tag";
 
 function HomePage() {
   const [documents, setDocuments] = useState([]);
+  const [selectedDocumentId, setSelectedDocumentId] = useState(null);
 
   useEffect(() => {
     const fetchDocuments = async () => {
@@ -23,14 +24,13 @@ function HomePage() {
   }, []);
 
   const handleCardClick = (id) => {
-    console.log("Documento clicado:", id);
-    // Aqui você pode fazer o que quiser com o ID do documento clicado
+    setSelectedDocumentId(id);
   };
 
   return (
     <main className="w-full bg-bage-bg">
       <Header />
-      <Tabs />
+      <Tabs tabs={["Classificação", "Descrição"]} />
 
       <div className="flex flex-wrap justify-center">
         {documents.map((document) => (
@@ -44,6 +44,8 @@ function HomePage() {
           />
         ))}
       </div>
+
+      {selectedDocumentId && <TaggingPage documentId={selectedDocumentId} />}
 
       <BottomBar />
     </main>

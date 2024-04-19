@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ResponseCard from "../comment_reponse/comment_response";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar, faUpLong } from "@fortawesome/free-solid-svg-icons";
 
 export default function CommentCard(comment){
     const comments = {
@@ -100,14 +102,9 @@ export default function CommentCard(comment){
                     Downvotes: {downvotes}
                 </div>
             </div>
-            <div className="mb-4">
-                {firstComment.responses.map((response, index) => (
-                    <ResponseCard key={index} response={response} handleResponseVote={handleResponseVote} />
-                ))}
-            </div>
             <div className="flex justify-between">
-                <button className={`bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 ${hasUpvoted ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleUpvote} disabled={hasUpvoted}>
-                    Upvote
+                <button  className={`bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 ${hasUpvoted ? 'opacity-50 cursor-not-allowed' : ''} rounded-full`} onClick={handleUpvote} disabled={hasUpvoted}>
+                <FontAwesomeIcon icon={faUpLong}/>
                 </button>
                 <button className={`bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 ${hasDownvoted ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleDownvote} disabled={hasDownvoted}>
                     Downvote

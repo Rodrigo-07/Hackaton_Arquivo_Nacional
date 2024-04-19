@@ -24,7 +24,7 @@ export default function BottomBar() {
                     </button>
                     <button type="button" className="inline-flex flex-col items-center justify-center px-5 hover:bg-red-400  group" onClick={()=>navigate("/rewards")}>
                         <FontAwesomeIcon icon={faTicket} size="xl" className="text-slate-50" />
-                        <span className="text-sm text-white ">Recompensas</span>
+                        <span className="text-sm text-white  ">Prêmios</span>
                     </button>
                     <button type="button" className="inline-flex flex-col items-center justify-center px-5 hover:bg-red-400  group" onClick={()=>navigate("/profile")}>
                         <FontAwesomeIcon icon={faUser} size="xl" className="text-slate-50" />

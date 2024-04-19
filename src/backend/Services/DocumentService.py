@@ -1,6 +1,4 @@
 import sqlite3
-from pydantic import BaseModel
-from typing import List, Optional
 from Models.DocumentModel import DocumentModel
 
 DATABASE_PATH = 'Data/database/db.sqlite'
@@ -11,8 +9,8 @@ class DocumentService:
         with sqlite3.connect(DATABASE_PATH) as conn:
             cursor = conn.cursor()
             cursor.execute(
-                "INSERT INTO tbl_documents (id, data_type, path) VALUES (?, ?, ?)",
-                (document.id, document.data_type, document.path)
+                "INSERT INTO tbl_documents (id, data_type, path, title, date, content, tags) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                (document.id, document.data_type, document.path, document.title, document.date, document.content, document.tags)
             )
             conn.commit()
 
@@ -31,8 +29,8 @@ class DocumentService:
         with sqlite3.connect(DATABASE_PATH) as conn:
             cursor = conn.cursor()
             cursor.execute(
-                "UPDATE tbl_documents SET data_type=?, path=? WHERE id=?",
-                (document.data_type, document.path, document_id)
+                "UPDATE tbl_documents SET data_type=?, path=?, title=?, date=?, content=?, tags=? WHERE id=?",
+                (document.data_type, document.path, document.title, document.date, document.content, document.tags, document_id)
             )
             conn.commit()
 

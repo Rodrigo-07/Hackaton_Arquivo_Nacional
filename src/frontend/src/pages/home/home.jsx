@@ -7,13 +7,25 @@ import Tabs from "../../components/tabs/tabs";
 import TaggingPage from "../../components/page_add_tag/page_add_tag";
 
 function HomePage() {
-  const [documents, setDocuments] = useState([]);
+  const [selectedDocumentId, setSelectedDocumentId] = useState(null);
+  const [documentsWithEmptyTags, setDocumentsWithEmptyTags] = useState([]);
+  const [documentsWithTags, setDocumentsWithTags] = useState([]);
+  const [selectedTab, setSelectedTab] = useState("Classificação");
 
   useEffect(() => {
     const fetchDocuments = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:8000/documents/");
-        setDocuments(response.data);
+        const allDocuments = response.data;
+
+        // tag vazia ou "None"
+        const emptyTagDocuments = allDocuments.filter(document => !document.tags || document.tags === "None");
+
+        // tag não vazia
+        const taggedDocuments = allDocuments.filter(document => document.tags && document.tags !== "None");
+
+        setDocumentsWithEmptyTags(emptyTagDocuments);
+        setDocumentsWithTags(taggedDocuments);
       } catch (error) {
         console.error("Erro ao buscar documentos:", error);
       }
@@ -23,27 +35,47 @@ function HomePage() {
   }, []);
 
   const handleCardClick = (id) => {
-    console.log("Documento clicado:", id);
-    // Aqui você pode fazer o que quiser com o ID do documento clicado
+    setSelectedDocumentId(id);
   };
 
   return (
     <main className="w-full bg-bage-bg">
       <Header />
-      <Tabs />
+      <Tabs tabs={["Classificação", "Descrição"]} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
 
       <div className="flex flex-wrap justify-center">
-        {documents.map((document) => (
-          <ArchiveCard
-            key={document.id}
-            id={document.id}
-            title={document.title}
-            subtitle={document.date}
-            image={document.path}
-            onClick={handleCardClick}
-          />
-        ))}
+        {selectedTab === "Classificação" ? (
+          documentsWithEmptyTags.map((document) => (
+            <ArchiveCard
+              key={document.id}
+              id={document.id}
+              title={document.title}
+              subtitle={document.date}
+              image={document.path}
+              onClick={handleCardClick}
+            />
+          ))
+        ) : (
+          documentsWithTags.map((document) => (
+            <ArchiveCard
+              key={document.id}
+              id={document.id}
+              title={document.title}
+              subtitle={document.date}
+              image={document.path}
+              onClick={handleCardClick}
+            />
+          ))
+        )}
       </div>
+
+      {selectedDocumentId && documentsWithEmptyTags.find(document => document.id === selectedDocumentId) && (
+        <TaggingPage documentId={selectedDocumentId} />
+      )}
+
+      {selectedDocumentId && documentsWithTags.find(document => document.id === selectedDocumentId) && (
+        console.log("Documento com tags selecionado:", selectedDocumentId)
+      )}
 
       <BottomBar />
     </main>

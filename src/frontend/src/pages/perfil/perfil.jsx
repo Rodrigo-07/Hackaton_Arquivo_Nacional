@@ -13,7 +13,6 @@ export default function PerfilPage({ user_id, user_name, user_foto, user_role })
 
   return (
     <main className="container h-screen"> 
-        <Header/>
         <section className="user-infos container mt-12 grid-rows-3 text-center">
             <div className="">
             <img src={user_foto} alt="user foto"  className="rounded-full m-auto"/>
@@ -161,7 +160,6 @@ export default function PerfilPage({ user_id, user_name, user_foto, user_role })
             </div>
             </div>
         </section>
-    <BottomBar/>
     </main>
   )
 }

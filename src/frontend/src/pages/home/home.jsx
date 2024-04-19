@@ -7,9 +7,7 @@ import Tabs from "../../components/tabs/tabs";
 const HomePage = () => {
     return( 
         <main className="w-full bg-bage-bg">
-            <Header/>
             <Tabs tabs = {["Classificação", "Descrição"]}/>
-            <BottomBar/>
         </main>
     )
 };

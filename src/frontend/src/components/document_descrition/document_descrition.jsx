@@ -9,6 +9,7 @@ function DocumentDescriptionPage() {
   const documentId = useParams().document_id;
   const [documentInfo, setDocumentInfo] = useState(null);
   const [activeTab, setActiveTab] = useState('Título');
+  const [formsSent, setFormsSent] = useState(false);
   const navigate = useNavigate();
   // Carrega informações do documento ao montar o componente
   useEffect(() => {
@@ -23,13 +24,14 @@ function DocumentDescriptionPage() {
 
     fetchDocumentInfo();
   }, [documentId]);
-
   // Simulação das palavras-chave e imagem do documento
   const keywords = "Futebol, Time, Jogo";
 
   // Função para manipular o envio do formulário de sugestões
   const handleSubmitSuggestion = (data) => {
     console.log("Dados do forms:", data);
+    setFormsSent(true);
+    console.log("teste");
     // console.log(activeTab)
   };
 

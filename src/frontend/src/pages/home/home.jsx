@@ -4,13 +4,11 @@ import BottomBar from "../../components/bottom_bar/bottom_bar";
 import Header from "../../components/header/header";
 import Tabs from "../../components/tabs/tabs";
 
-
-// página inicial do aplicativo
-function HomePage(){
+const HomePage = () => {
     return( 
         <main className="w-full bg-bage-bg">
             <Header/>
-            <Tabs/>
+            <Tabs tabs = {["Classificação", "Descrição"]}/>
             <BottomBar/>
         </main>
     )

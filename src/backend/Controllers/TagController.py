@@ -9,6 +9,14 @@ async def create_tag(tag: TagModel):
     TagService.create_tag(tag)
     return {"message": "Tag created successfully"}
 
+@router.get("/tags/")
+async def read_all_tags():
+    tags = TagService.get_all_tags()
+    if tags:
+        return [tag.dict() for tag in tags]
+    else:
+        raise HTTPException(status_code=404, detail="No tags found")
+
 @router.get("/tags/{tag_id}")
 async def read_tag(tag_id: int):
     tag = TagService.get_tag_by_id(tag_id)

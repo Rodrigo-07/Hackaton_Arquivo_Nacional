@@ -1,6 +1,7 @@
 import React from "react";
 import ArchiveCard from "../../components/archive_card/archive_card";
 import BottomBar from "../../components/bottom_bar/bottom_bar";
+import Tabs from "../../components/tabs/tabs";
 
 // página inicial do aplicativo
 function HomePage(){
@@ -9,10 +10,7 @@ function HomePage(){
             <header className="">
 
             </header>
-            <section className=" container mx-auto columns-2">
-                <ArchiveCard/>
-                <ArchiveCard/>
-            </section>
+            <Tabs/>
             <footer>
                 <BottomBar/>
             </footer>

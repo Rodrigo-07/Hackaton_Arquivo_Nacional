@@ -23,7 +23,7 @@ export default function ClassificationPage() {
                     </div>
 
                     <div className="text-center">
-                        <h2 className="text-2xl text-gray font-semibold mb-4">Quais palavras-chave descrevem de forma apropriada o documento acima?</h2>
+                        <h2 className="text-2xl text-gray font-semibold mb-4">Palavras chave: </h2>
                     </div>
 
                     <div className="flex justify-between mt-4">

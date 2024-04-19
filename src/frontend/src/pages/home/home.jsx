@@ -37,12 +37,12 @@ function HomePage() {
   }, []);
 
   const handleCardClick = (id) => {
-    navigate(`/tagging-page/${id}`);
+    setSelectedDocumentId(id);
   };
 
-  const handleTagCardClick = (id) => {
-    navigate(`/classify/${id}`);
-  };
+  // const handleTagCardClick = (id) => {
+  //   navigate(`/classify/${id}`);
+  // };
 
   return (
     <main className="w-full bg-bage-bg">
@@ -67,18 +67,18 @@ function HomePage() {
               title={document.title}
               subtitle={document.date}
               image={document.path}
-              onClick={handleTagCardClick}
+              onClick={handleCardClick}
             />
           ))
         )}
       </div>
 
       {selectedDocumentId && documentsWithEmptyTags.find(document => document.id === selectedDocumentId) && (
-        <TaggingPage documentId={selectedDocumentId} />
+        navigate(`/tagging-page/${selectedDocumentId}`)
       )}
 
       {selectedDocumentId && documentsWithTags.find(document => document.id === selectedDocumentId) && (
-          <DocumentDescription documentId={selectedDocumentId} />
+        navigate(`/classify/${selectedDocumentId}`)
       )}
 
       <BottomBar />

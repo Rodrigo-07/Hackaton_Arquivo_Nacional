@@ -37,12 +37,16 @@ function HomePage() {
   }, []);
 
   const handleCardClick = (id) => {
-    navigate(`/tagging-page/${id}`);
+    setSelectedDocumentId(id);
   };
+
+  // const handleTagCardClick = (id) => {
+  //   navigate(`/classify/${id}`);
+  // };
 
   return (
     <main className="w-full bg-bage-bg">
-      <Tabs tabs={["Classificação", "Descrição"]} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+      <Tabs tabs={["Classificação", "Descrição"]} selectedTab={selectedTab} setSelectedTab={setSelectedTab} size={"md:w-2/4 w-3/4"} />
       <div className="flex flex-wrap justify-center">
         {selectedTab === "Classificação" ? (
           documentsWithEmptyTags.map((document) => (
@@ -70,11 +74,11 @@ function HomePage() {
       </div>
 
       {selectedDocumentId && documentsWithEmptyTags.find(document => document.id === selectedDocumentId) && (
-        <TaggingPage documentId={selectedDocumentId} />
+        navigate(`/tagging-page/${selectedDocumentId}`)
       )}
 
       {selectedDocumentId && documentsWithTags.find(document => document.id === selectedDocumentId) && (
-          <DocumentDescription documentId={selectedDocumentId} />
+        navigate(`/classify/${selectedDocumentId}`)
       )}
 
       <BottomBar />

@@ -132,36 +132,34 @@ export default function TaggingPage() {
 
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen p-4 bg-gray-100">
-      <div className="w-full max-w-md bg-gray rounded-lg shadow p-6">
+    <div className="flex flex-col items-center justify-start min-h-fit p-4 ">
+      <div className="w-full max-w-md bg-gray-100 rounded-lg shadow p-6 drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
         <img
           src={file_path} // Substitua com a URL da imagem real
           alt="Document"
           className="mb-4 w-full h-32 object-cover rounded"
         />
-        <div className="relative">
-          <div className="flex flex-wrap items-center gap-2 p-2 border rounded">
-            {selectedTags.map(tag => (
-              <div
-                key={tag}
-                className="flex items-center gap-1 bg-red-200 px-2 py-1 rounded"
+        <div className="relative mb-2 ">
+          {selectedTags.map(tag => (
+            <div
+              key={tag}
+              className="flex items-center gap-1 bg-red-200 px-2 py-1 "
+            >
+              <span className="text-red-700">{tag}</span>
+              <button
+                className="text-red-700 hover:text-red-900"
+                onClick={() => removeTag(tag)}
               >
-                <span className="text-red-700">{tag}</span>
-                <button
-                  className="text-red-700 hover:text-red-900"
-                  onClick={() => removeTag(tag)}
-                >
-                  ×
-                </button>
-              </div>
-            ))}
-            <input
-              className="outline-none flex-grow w-full p-2"
-              value={inputValue}
-              onChange={handleInputChange}
-              onFocus={() => setDropdownOpen(true)}
-            />
-          </div>
+                ×
+              </button>
+            </div>
+          ))}
+          <input
+            className="outline-none flex-grow w-full p-2 rounded-md drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
+            value={inputValue}
+            onChange={handleInputChange}
+            onFocus={() => setDropdownOpen(true)}
+          />
           {dropdownOpen && (
             <div className="absolute left-0 right-0 z-10 mt-1 max-h-48 overflow-y-auto bg-white border rounded shadow">
               <ul>

@@ -46,7 +46,7 @@ function HomePage() {
 
   return (
     <main className="w-full bg-bage-bg">
-      <Tabs tabs={["Classificação", "Descrição"]} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+      <Tabs tabs={["Classificação", "Descrição"]} selectedTab={selectedTab} setSelectedTab={setSelectedTab} size={"md:w-2/4 w-3/4"} />
       <div className="flex flex-wrap justify-center">
         {selectedTab === "Classificação" ? (
           documentsWithEmptyTags.map((document) => (

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Tabs({ tabs, selectedTab, setSelectedTab }) {
+export default function Tabs({ tabs, selectedTab, setSelectedTab, size }) {
   // No need for activeTab state in Tabs component
 
   // Function to change the active tab
@@ -10,7 +10,7 @@ export default function Tabs({ tabs, selectedTab, setSelectedTab }) {
 
   return (
     <div className="flex justify-center mb-8">
-      <div className="md:w-2/4 w-3/4">
+      <div className={size}>
         <div className="flex flex-wrap align-middle p-1 list-none rounded-lg bg-blue-gray-50/60 justify-center items-center ">
           {tabs.map((tab) => (
             <li key={tab} className="flex-auto md:mr-10 mr-4 text-center">

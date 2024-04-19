@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ArchiveCard from "../../components/archive_card/archive_card";
 import BottomBar from "../../components/bottom_bar/bottom_bar";
-import Header from "../../components/header/header";
 import Tabs from "../../components/tabs/tabs";
 import TaggingPage from "../../components/page_add_tag/page_add_tag";
 
@@ -40,9 +39,7 @@ function HomePage() {
 
   return (
     <main className="w-full bg-bage-bg">
-      <Header />
       <Tabs tabs={["Classificação", "Descrição"]} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-
       <div className="flex flex-wrap justify-center">
         {selectedTab === "Classificação" ? (
           documentsWithEmptyTags.map((document) => (

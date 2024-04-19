@@ -3,10 +3,12 @@ import axios from "axios";
 import ArchiveCard from "../../components/archive_card/archive_card";
 import BottomBar from "../../components/bottom_bar/bottom_bar";
 import Tabs from "../../components/tabs/tabs";
-import TaggingPage from "../../components/page_add_tag/page_add_tag";
 import DocumentDescription from "../../components/document_descrition/document_descrition";
+import TaggingPage from "../../components/page_add_tag/page_add_tag"
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
+  const navigate = useNavigate();
   const [selectedDocumentId, setSelectedDocumentId] = useState(null);
   const [documentsWithEmptyTags, setDocumentsWithEmptyTags] = useState([]);
   const [documentsWithTags, setDocumentsWithTags] = useState([]);
@@ -32,10 +34,10 @@ function HomePage() {
     };
 
     fetchDocuments();
-  }, []);
+  }, [documentsWithEmptyTags, documentsWithTags]);
 
   const handleCardClick = (id) => {
-    setSelectedDocumentId(id);
+    navigate(`/tagging-page/${id}`);
   };
 
   return (

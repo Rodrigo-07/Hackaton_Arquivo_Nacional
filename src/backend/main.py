@@ -21,3 +21,9 @@ app.include_router(user_router)
 app.include_router(output_router)
 app.include_router(document_router)
 app.include_router(tag_router)
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run("main:app", reload=True) 

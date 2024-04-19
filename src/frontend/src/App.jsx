@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomePage from './pages/home/home';
-import PerfilPage from './pages/perfil/perfil';
+import PerfilPage from './pages/profile/profile';
 import CommentCard from './components/comments_card/comments_card';
 import CompetitionsPage from './pages/competitions/competitions';
 import TaggingPage from "./components/page_add_tag/page_add_tag";

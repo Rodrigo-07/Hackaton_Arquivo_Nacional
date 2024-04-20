@@ -1,0 +1,80 @@
+{
+    "id": 1,
+    "comments": [
+      {
+        "id_user": 9,
+        "suggestion": "Time do Corinthians no Estádio Morumbi",
+        "justification": "Os jogadores estão com a camisa cujo símbolo é do Corinthians e o jogo se passou no estádio Morumbi.",
+        "votes_normal": 10,
+        "votes_revisor": 2,
+        "selected": false,
+        "timestamp": "12/03/2024, 13:14:02",
+        "responses": [
+          {
+            "id_user": 4,
+            "message": "Acho que não é no Morumbi, esse estádio parece ser o Maracanã.",
+            "votes": 5,
+            "timestamp": "12/03/2024, 15:30:45",
+            "responses": [
+              {
+                "id_user": 12,
+                "message": "Concordo com você, as arquibancadas não são do Morumbi.",
+                "votes": 3,
+                "timestamp": "12/03/2024, 16:22:19",
+                "responses": []
+              },
+              {
+                "id_user": 15,
+                "message": "Na verdade, o jogo foi no Pacaembu, é fácil identificar pelas estruturas ao redor.",
+                "votes": 8,
+                "timestamp": "13/03/2024, 09:47:33",
+                "responses": []
+              }
+            ]
+          },
+          {
+            "id_user": 27,
+            "message": "Conferi com outras fontes e parece que é o Morumbi mesmo, em um jogo antigo.",
+            "votes": 4,
+            "timestamp": "14/03/2024, 10:21:07",
+            "responses": [
+              {
+                "id_user": 30,
+                "message": "Tem alguma imagem de referência para comprovar isso?",
+                "votes": 2,
+                "timestamp": "15/03/2024, 11:35:50",
+                "responses": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id_user": 13,
+        "suggestion": "Final da Libertadores no Estádio do Morumbi",
+        "justification": "A foto é do jogo final da Libertadores, e pelo que sei foi no Morumbi.",
+        "votes_normal": 8,
+        "votes_revisor": 1,
+        "selected": false,
+        "timestamp": "16/03/2024, 14:15:20",
+        "responses": [
+          {
+            "id_user": 21,
+            "message": "Não me lembro da Libertadores ter uma final nesse estádio.",
+            "votes": 3,
+            "timestamp": "16/03/2024, 18:25:30",
+            "responses": [
+              {
+                "id_user": 22,
+                "message": "Isso foi há alguns anos, a memória das pessoas falha.",
+                "votes": 1,
+                "timestamp": "17/03/2024, 08:15:42",
+                "responses": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

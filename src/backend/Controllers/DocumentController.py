@@ -1,40 +1,50 @@
+from typing import List
 from fastapi import APIRouter, HTTPException
 from Models.DocumentModel import DocumentModel
 from Services.DocumentService import DocumentService
-from Data.DBManager import DBManager
 
 router = APIRouter()
-db_manager = DBManager("Data/database/db.sqlite")
-document_service = DocumentService(db_manager)
 
-@router.post("/documents/", response_model=DocumentModel)
-def create_document(document: DocumentModel):
-    return document_service.create_document(**document.dict())
+# Rota para criar um novo documento
+@router.post("/documents/")
+async def create_document(document: DocumentModel):
+    DocumentService.create_document(document)
+    return {"message": "Document created successfully"}
 
-@router.get("/documents/{document_id}", response_model=DocumentModel)
-def get_document(document_id: int):
-    document = document_service.get_document_by_id(document_id)
+# Rota para obter um documento pelo ID
+@router.get("/documents/{document_id}")
+async def get_document(document_id: int):
+    document = DocumentService.get_document_by_id(document_id)
     if document:
-        return document
+        return document.dict()
     else:
-        raise HTTPException(status_code=404, detail="Documento não encontrado")
+        raise HTTPException(status_code=404, detail="Document not found")
 
-@router.get("/documents/", response_model=list[DocumentModel])
-def get_all_documents():
-    return document_service.get_all_documents()
-
-@router.put("/documents/{document_id}", response_model=DocumentModel)
-def update_document(document_id: int, document: DocumentModel):
-    updated_document = document_service.update_document_by_id(document_id, **document.dict())
-    if updated_document:
-        return updated_document
+# Rota para obter todos os documentos
+@router.get("/documents/", response_model=List[DocumentModel])
+async def get_all_documents():
+    documents = DocumentService.get_all_documents()
+    if documents:
+        return documents
     else:
-        raise HTTPException(status_code=404, detail="Documento não encontrado")
+        return []
 
+# Rota para atualizar um documento pelo ID
+@router.put("/documents/{document_id}")
+async def update_document(document_id: int, document: DocumentModel):
+    existing_document = DocumentService.get_document_by_id(document_id)
+    if existing_document:
+        DocumentService.update_document(document_id, document)
+        return {"message": "Document updated successfully"}
+    else:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+# Rota para deletar um documento pelo ID
 @router.delete("/documents/{document_id}")
-def delete_document(document_id: int):
-    deleted = document_service.delete_document_by_id(document_id)
-    if deleted:
-        return {"mensagem": "Documento excluído com sucesso"}
+async def delete_document(document_id: int):
+    existing_document = DocumentService.get_document_by_id(document_id)
+    if existing_document:
+        DocumentService.delete_document(document_id)
+        return {"message": "Document deleted successfully"}
     else:
-        raise HTTPException(status_code=404, detail="Documento não encontrado")
+        raise HTTPException(status_code=404, detail="Document not found")

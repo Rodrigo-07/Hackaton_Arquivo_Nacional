@@ -1,22 +1,45 @@
-from Data.DBManager import DBManager
+import sqlite3
+from pydantic import BaseModel
+from typing import List, Optional
+from Models.UserModel import UserModel
+
+DATABASE_PATH = 'Data/database/db.sqlite'
 
 class UserService:
-    def __init__(self, db_manager: DBManager):
-        self.db_manager = db_manager
-        self.table_name = "tbl_users"
+    @staticmethod
+    def create_user(user: UserModel):
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "INSERT INTO tbl_users (id, username, password, email, isStudying, college, major, role, xp, level, credits, hours_credit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                (user.id, user.username, user.password, user.email, user.isStudying, user.college, user.major, user.role, user.xp, user.level, user.credits, user.hours_credit)
+            )
+            conn.commit()
 
-    def create_user(self, **kwargs):
-        self.db_manager.create_record(self.table_name, **kwargs)
+    @staticmethod
+    def get_user_by_id(user_id: int) -> UserModel:
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM tbl_users WHERE id=?", (user_id,))
+            row = cursor.fetchone()
+            if row:
+                return UserModel(**dict(row))
 
-    def get_user_by_id(self, user_id):
-        return self.db_manager.get_record_by_id(self.table_name, user_id)
+    @staticmethod
+    def update_user(user_id: int, user: UserModel):
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "UPDATE tbl_users SET username=?, password=?, email=?, isStudying=?, college=?, major=?, role=?, xp=?, level=?, credits=?, hours_credit=? WHERE id=?",
+                (user.username, user.password, user.email, user.isStudying, user.college, user.major, user.role, user.xp, user.level, user.credits, user.hours_credit, user_id)
+            )
+            conn.commit()
 
-    def get_all_users(self):
-        return self.db_manager.get_all_records(self.table_name)
-
-    def update_user_by_id(self, user_id, **kwargs):
-        self.db_manager.update_record_by_id(self.table_name, user_id, **kwargs)
-
-    def delete_user_by_id(self, user_id):
-        self.db_manager.delete_record_by_id(self.table_name, user_id)
+    @staticmethod
+    def delete_user(user_id: int):
+        with sqlite3.connect(DATABASE_PATH) as conn:
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM tbl_users WHERE id=?", (user_id,))
+            conn.commit()
     

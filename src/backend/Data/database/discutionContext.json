@@ -1,0 +1,80 @@
+{
+    "id": 2,
+    "comments": [
+      {
+        "id_user": 11,
+        "suggestion": "Reunião de estratégia empresarial",
+        "justification": "Os gráficos e o layout indicam uma apresentação corporativa típica dos anos 80.",
+        "votes_normal": 12,
+        "votes_revisor": 2,
+        "selected": false,
+        "timestamp": "2024-03-18T10:00:00Z",
+        "responses": [
+          {
+            "id_user": 25,
+            "message": "Discordo. Esses gráficos também eram usados em contextos acadêmicos. Podem ser de uma conferência de pesquisa.",
+            "votes": 7,
+            "timestamp": "2024-03-19T09:30:00Z",
+            "responses": [
+              {
+                "id_user": 39,
+                "message": "Interessante ponto. Há uma seção no documento que menciona financiamento, o que poderia indicar um encontro de pesquisa.",
+                "votes": 5,
+                "timestamp": "2024-03-20T15:45:00Z",
+                "responses": []
+              }
+            ]
+          },
+          {
+            "id_user": 33,
+            "message": "Conferi o contexto histórico e esse estilo de gráfico era popular em apresentações de startups da época. Pode ser um pitch para investidores.",
+            "votes": 8,
+            "timestamp": "2024-03-21T11:20:00Z",
+            "responses": [
+              {
+                "id_user": 42,
+                "message": "Isso faz sentido, especialmente com a menção a 'rodadas de investimento' na página 5.",
+                "votes": 6,
+                "timestamp": "2024-03-22T12:30:00Z",
+                "responses": []
+              },
+              {
+                "id_user": 45,
+                "message": "Há alguma informação sobre os autores ou a audiência? Isso poderia esclarecer o propósito do documento.",
+                "votes": 3,
+                "timestamp": "2024-03-23T10:15:00Z",
+                "responses": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id_user": 17,
+        "suggestion": "Workshop de desenvolvimento de liderança",
+        "justification": "O conteúdo do documento inclui exercícios de team-building e gestão de conflitos.",
+        "votes_normal": 9,
+        "votes_revisor": 2,
+        "selected": false,
+        "timestamp": "2024-03-24T14:30:00Z",
+        "responses": [
+          {
+            "id_user": 36,
+            "message": "Parece-me mais um retiro de treinamento. Além dos exercícios, há referências a locais de hospedagem e alimentação no documento.",
+            "votes": 4,
+            "timestamp": "2024-03-25T16:50:00Z",
+            "responses": [
+              {
+                "id_user": 48,
+                "message": "Também notei isso. E a linguagem é menos formal, o que é atípico para um evento corporativo estritamente empresarial.",
+                "votes": 5,
+                "timestamp": "2024-03-26T18:05:00Z",
+                "responses": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

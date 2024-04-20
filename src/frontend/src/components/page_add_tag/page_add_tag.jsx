@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate, Navigate } from 'react-router-dom';
+import AlertToast from '../alert_toast/alert_toast';
 
 
 
@@ -31,6 +32,9 @@ export default function TaggingPage() {
   const [inputValue, setInputValue] = useState('');
   const [existingTags, setExistingTags] = useState([]);
   const [file_path, setFilePath] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+  const [message, setMessage] = useState('');
+  const [tipo, setTipo] = useState('');
 
   const navigation = useNavigate();
 
@@ -125,14 +129,20 @@ export default function TaggingPage() {
       await axios.put(`https://hackaton-arquivo-nacional-backend.onrender.com/documents/${document_id}`, documentData);
 
       console.log("Tags atualizadas com sucesso!");
+      setMessage('Enviado com sucesso!');
+      setTipo('Sucesso');
+      setIsOpen(true)
     } catch (error) {
       console.error("Erro ao atualizar as tags:", error);
+      setMessage('Erro ao enviar dados');
+      setTipo('Denied');
+      setIsOpen(true)
     }
   };
 
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-fit p-4 ">
+    <div className="flex flex-col items-center justify-start min-h-screen p-4 ">
       <div className="w-full max-w-md bg-gray-100 rounded-lg shadow p-6 drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
         <img
           src={file_path} // Substitua com a URL da imagem real
@@ -193,7 +203,9 @@ export default function TaggingPage() {
           </button>
         </div>
       </div>
+      <AlertToast visible={isOpen} close={() => { setIsOpen(false) }} type={tipo} message={message} />
     </div>
+
   );
 
 }

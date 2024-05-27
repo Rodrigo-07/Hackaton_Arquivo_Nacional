@@ -7,9 +7,9 @@ Este WebApp é uma plataforma colaborativa e gamificada destinada à catalogaç�
 
 ## Integrantes
 - [Mauro Chagas](https://www.linkedin.com/in/mauro-das-chagas-junior/)
-- [Fernando Antonio]([www.linkedin.com](https://www.linkedin.com/in/fernando-vasconcellos-/))
+- [Fernando Antonio](https://www.linkedin.com/in/fernando-vasconcellos-/)
 - [Caio de Paula](https://www.linkedin.com/in/caio-teixeira-paula/)
-- [Luiza Rubim]([www.linkedin.com](https://www.linkedin.com/in/luiza-rubim/))
+- [Luiza Rubim](https://www.linkedin.com/in/luiza-rubim/)
 - [Rodrigo Sales](https://www.linkedin.com/in/rodrigo-sales-07/)
 
 ## Funcionalidades
